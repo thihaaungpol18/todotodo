@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.thiha.roomexe.R
 import com.thiha.roomexe.db.Note
+import java.util.*
 
 /**
 project: RoomExe
@@ -16,7 +17,7 @@ Created by : Thiha
 date : 6/23/2020
  */
 class NoteAdapter(private val context: Context) : RecyclerView.Adapter<NoteAdapter.NoteVH>() {
-    private var itemLists: List<Note> = ArrayList()
+    private var itemLists = emptyList<Note>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteVH {
         return NoteVH(
             LayoutInflater.from(
@@ -46,12 +47,12 @@ class NoteAdapter(private val context: Context) : RecyclerView.Adapter<NoteAdapt
             tvID?.text = currentNote.id.toString()
             tvTitle?.text = currentNote.title
             tvDescription?.text = currentNote.description
-            Snackbar.make(tvDescription as View, currentNote.date, Snackbar.LENGTH_SHORT).show()
+//            Snackbar.make(, currentNote.date, Snackbar.LENGTH_SHORT).show()
         }
     }
 
     fun setNotes(notes: List<Note>) {
-        itemLists = notes
+        this.itemLists = notes
         notifyDataSetChanged()
     }
 }
